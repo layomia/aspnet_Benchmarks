@@ -33,8 +33,7 @@ internal static class AppSettingsExtensions
 {
     public static IServiceCollection ConfigureAppSettings(this IServiceCollection services, IConfigurationRoot configurationRoot, IHostEnvironment hostEnvironment)
     {
-        var optionsBuilder = services.AddOptions<AppSettings>()
-            .BindConfiguration(nameof(AppSettings));
+        var optionsBuilder = OptionsBuilderConfigurationExtensions.BindConfiguration(services.AddOptions<AppSettings>(), nameof(AppSettings));
 
         if (!hostEnvironment.IsBuild())
         {
